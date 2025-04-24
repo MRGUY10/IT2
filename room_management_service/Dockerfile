@@ -15,6 +15,6 @@ FROM openjdk:17
 WORKDIR /app
 
 # Copier le JAR depuis l'étape précédente
-COPY --from=build /app/target/*.jar room_service.jar
+COPY --from=build /app/target/*.jar room_service.war
 
-ENTRYPOINT ["java", "-jar", "room_service.jar"]
+ENTRYPOINT ["java", "-jar", "room_service.war"]
