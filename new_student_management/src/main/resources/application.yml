@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: student-service
+  config:
+    import: optional:configserver:http://localhost:8088
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/candidate?maxAllowedPacket=16777216
+    username: user
+    password: "0000"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  cloud:
+    loadbalancer:
+      enabled: true
+
+server:
+  port: 8082
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 123456789
+    key-store-type: PKCS12
+    key-alias: kamdem
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://74.249.8.84:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

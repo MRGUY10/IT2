@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  service-discovery:
+    build: ./service_discovery
+    container_name: service-discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - app-network
+
+  api-gateway:
+    build: ./api_gateway
+    container_name: api-gateway
+    ports:
+      - "8060:8060"
+    depends_on:
+      - service-discovery
+    networks:
+      - app-network
+
+  user-service:
+    build: ./user-management-service
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - service-discovery
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/authDB?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - app-network
+
+  student-service:
+    build: ./new_student_management
+    container_name: student-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+      - service-discovery
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/candidateDB?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - app-network
+
+  room-service:
+    build: ./room_management_service
+    container_name: rooms_management
+    ports:
+      - "8084:8084"
+    depends_on:
+      - mysql
+      - service-discovery
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/RoomDB?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - app-network
+
+
+  notification-service:
+    build: ./notification_service
+    container_name: notification-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - mysql
+      - service-discovery
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/NotificationDB?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - app-network
+  angular-frontend:
+    build: ./front_end
+    container_name: front-app
+    ports:
+      - "4200:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

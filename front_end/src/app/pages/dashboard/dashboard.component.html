@@ -1,0 +1,71 @@
+<h1 class="inter-semi-bold" style="font-size: 2rem;">Dashboard</h1>
+<!-- <h5 class="inter-medium" style="font-size: 0.75rem; color:#878791c3">Over all Stats</h5> -->
+<div class="cards">
+    <!-- <div class="card">
+        <mat-icon style="background-color: #FF6F00;" svgIcon="tasks" class="dashicon"></mat-icon>
+        <p class="inter-regular">Total Tasks</p>
+        <div class="stats">
+            <h2 class="inter-bold">{{tasks.length}}</h2>
+            <button type="button" class="inter-bold" [class.hundred] = "percentageChange===100" [class]= "percentageChange > 0 ? 'rise': percentageChange===0 ? 'zero' : 'fall'">
+                @if(percentageChange!==0){
+                    <mat-icon [svgIcon] = "percentageChange>0 ? 'uparrow' : 'downarrow'"></mat-icon>
+                }
+                {{percentageChange}}%
+            </button>
+        </div>
+    </div> -->
+    <div class="card">
+        <mat-icon style="background-color: #0196DA;" svgIcon="user" class="dashicon"></mat-icon>
+        <p class="inter-regular">Total Candidates</p>
+        <div class="stats">
+            <h2 class="inter-bold">{{ totalCandidates}}</h2>
+            <button type="button" class="inter-bold" [class.hundred] = "percentageChangeCandidates===100" [class]= "percentageChangeCandidates > 0 ? 'rise': percentageChangeCandidates===0 ? 'zero': 'fall'">
+                @if(percentageChangeCandidates!==0){
+                    <mat-icon [svgIcon] = "percentageChangeCandidates>0 ? 'uparrow' : 'downarrow'"></mat-icon>
+                }
+                {{percentageChangeCandidates}}%
+            </button>
+        </div>
+    </div>
+    <!-- <div class="card">
+        <mat-icon style="background-color: #008D59;" svgIcon="events" class="dashicon"></mat-icon>
+        <p class="inter-regular">Total Events</p>
+        <div class="stats">
+            <h2 class="inter-bold">{{totalEvents}}</h2>
+            <button type="button" class="inter-bold" [class.hundred] = "percentageChangeEvents===100" [class]= "percentageChangeEvents > 0 ? 'rise': percentageChangeEvents===0 ? 'zero': 'fall'">
+                @if(percentageChangeEvents!==0){
+                    <mat-icon [svgIcon] = "percentageChangeEvents>0 ? 'uparrow' : 'downarrow'"></mat-icon>
+                }
+                {{percentageChangeEvents}}%
+            </button>
+        </div>
+    </div> -->
+    <div class="card">
+        <mat-icon style="background-color: #8800FF;" svgIcon="students" class="dashicon"></mat-icon>
+        <p class="inter-regular">Total Students</p>
+        <div class="stats">
+            <h2>{{ totalstudents}}</h2>
+            <button type="button" class="inter-bold" [class.hundred] = "percentageChangeStudents===100" [class]= "percentageChangeStudents > 0 ? 'rise': percentageChangeStudents===0 ? 'zero': 'fall'">
+                @if(percentageChangeStudents!==0){
+                    <mat-icon [svgIcon] = "percentageChangeStudents>0 ? 'uparrow' : 'downarrow'"></mat-icon>
+                }
+                {{percentageChangeStudents}}%
+            </button>
+        </div>
+    </div>
+</div>
+<div class="cards">
+    <div class="card graph">
+        <div class="stats">
+            <h4 class="inter-semi-bold">Pipeline Overview</h4>
+            <div class="stats">
+                <button class="square-btn new" [routerLink]="['/candidates/new']" routerLinkActive="router-link-active">
+                    <mat-icon svgIcon="add" aria-hidden="false" class="add"></mat-icon>
+                    New candidate
+                </button>
+            </div>
+        </div>
+        <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+    </div>
+
+</div>

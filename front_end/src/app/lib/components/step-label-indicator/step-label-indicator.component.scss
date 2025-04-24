@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  &__label {
+    display: flex;
+    column-gap: 12px;
+    align-items: center;
+    &__main-label {
+      font-size: 24px;
+      color: #969191;
+    }
+
+    &__main-divider {
+      width: 2px;
+      height: 32px;
+      background-color: #d9d9d9;
+    }
+
+    &__main-step {
+    }
+  }
+
+  &__reset-action {
+    text-transform: capitalize;
+    cursor: pointer;
+    opacity: 0.5;
+    outline: 1px solid black;
+    padding: 5px 24px;
+    border-radius: 4px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

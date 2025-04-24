@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <input
+    class="poppins-regular"
+    type="text"
+    placeholder="Former School"
+    formControlName="formerSchool"
+  />
+  <input
+    class="poppins-regular"
+    type="date"
+    placeholder="Graduation Date"
+    formControlName="graduationDate"
+  />
+  <label for="fieldOfStudy">Field of Study</label>
+  <select class="poppins-regular" formControlName="fieldOfStudy" id="fieldOfStudy">
+    <option value="" disabled selected>Select Field of Study</option>
+    <option value="Arts">Arts</option>
+    <option value="Science">Science</option>
+    <option value="Technical">Technical</option>
+  </select>
+  <label for="speciality">Speciality</label>
+  <select class="poppins-regular" formControlName="speciality" id="speciality">
+    <option value="" disabled selected>Select Speciality</option>
+    <option value="ISI">ISI</option>
+    <option value="SRT">SRT</option>
+    <option value="GC">GC</option>
+  </select>
+</form>

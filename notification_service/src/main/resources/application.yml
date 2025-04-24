@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: notification-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/notification?maxAllowedPacket=16777216&createDatabaseIfNotExist=true
+    username: root
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  cloud:
+    loadbalancer:
+      enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kamdem.guy@institutsaintjean.org
+    password: osurrusawvgooxam
+    properties:
+      mail.smtp.ssl.trust: smtp.gmail.com
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 3000
+      mail.smtp.writetimeout: 5000
+
+  twilio:
+    accountSid: AC63598fb1b3c057cd728745a4c016188e
+    authToken: feb1ef7f7578e67b798c5586b6a577b9
+    phoneNumber: +14437072566
+
+server:
+  port: 8085
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 123456789
+    key-store-type: PKCS12
+    key-alias: kamdem
+  servlet:
+    context-path: /notifications/
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://74.249.8.84:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

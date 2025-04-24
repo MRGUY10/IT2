@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="card">
+    <p-breadcrumb class="breadcrumb" [model]="breadcrumbItems"></p-breadcrumb>
+
+    <div class="form-content">
+      <div [formGroup]="mainFormGroup" class="scrollable-form">
+        <!-- Personal Information Section -->
+        <div class="form-section" formGroupName="personalInfo">
+          <h2>Personal Information</h2>
+
+          <div class="input-grid">
+            <div class="input-field">
+              <label>First Name *</label>
+              <input type="text" formControlName="firstName">
+            </div>
+
+            <div class="input-field">
+              <label>Last Name *</label>
+              <input type="text" formControlName="lastName">
+            </div>
+
+            <div class="input-field">
+              <label>Email *</label>
+              <input type="email" formControlName="email">
+            </div>
+
+            <div class="input-field">
+              <label>Phone Number *</label>
+              <input type="tel" formControlName="phoneNumber">
+            </div>
+
+            <div class="input-field">
+              <label>Country *</label>
+              <input type="text" formControlName="country">
+            </div>
+
+            <div class="input-field">
+              <label>City *</label>
+              <input type="text" formControlName="city">
+            </div>
+
+            <div class="input-field">
+              <label>Field *</label>
+              <input type="text" formControlName="field">
+            </div>
+
+            <div class="input-field">
+              <label>Application Source *</label>
+              <input type="text" formControlName="applicationSource">
+            </div>
+
+            <div class="input-field">
+              <label>Application Date *</label>
+              <input type="datetime-local" formControlName="applicationDate">
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="form-section" formGroupName="education">
+          <h2>Education</h2>
+
+          <div class="input-grid">
+            <div class="input-field">
+              <label>Institution Name *</label>
+              <input type="text" formControlName="institutionName">
+            </div>
+
+            <div class="input-field">
+              <label>Highest Education *</label>
+              <input type="text" formControlName="highestEducation">
+            </div>
+
+            <div class="input-field">
+              <label>Graduation Year *</label>
+              <input type="text" formControlName="graduationYear">
+            </div>
+
+            <div class="input-field">
+              <label>Field of Study *</label>
+              <input type="text" formControlName="fieldOfStudy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Experience Section -->
+        <div class="form-section" formGroupName="workExperience">
+          <h2>Work Experience</h2>
+
+          <div class="input-grid">
+            <div class="input-field">
+              <label>Company Name</label>
+              <input type="text" formControlName="companyName">
+            </div>
+
+            <div class="input-field">
+              <label>Responsibilities</label>
+              <input type="text" formControlName="responsibilities">
+            </div>
+          </div>
+        </div>
+
+        <!-- Parent Information Section -->
+        <div class="form-section" formGroupName="parentInfo">
+          <h2>Parent Information</h2>
+
+          <div class="input-grid">
+            <div class="input-field">
+              <label>Full Name *</label>
+              <input type="text" formControlName="fullName">
+            </div>
+
+            <div class="input-field">
+              <label>Email *</label>
+              <input type="email" formControlName="email">
+            </div>
+
+            <div class="input-field">
+              <label>Phone Number *</label>
+              <input type="tel" formControlName="phoneNumber">
+            </div>
+
+            <div class="input-field">
+              <label>Relationship *</label>
+              <input type="text" formControlName="relationshipToCandidate">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="button" (click)="onSubmit()" class="submit-button">
+            Create Candidate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
