@@ -12,15 +12,16 @@ spring:
     show-sql: true
 
 
-  eureka:
-    client:
-      serviceUrl:
-        defaultZone: http://74.249.8.84:8761/eureka/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://74.249.8.84:8761/eureka/
 
-  management:
-    tracing:
-      sampling:
-        probability: 1.0
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
 
 server:
   port: 8084
